@@ -1,3 +1,5 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,7 +18,7 @@
     <meta name="author" content="SW-THEMES">
 
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="assets/images/icons/favicon.png">
+    <link rel="icon" type="image/x-icon" href="${pageContext.request.contextPath}/img/icons/favicon.png">
 
     <script>
         WebFontConfig = {
@@ -27,7 +29,7 @@
         (function(d) {
             var wf = d.createElement('script'),
                 s = d.scripts[0];
-            wf.src = 'assets/js/webfont.js';
+            wf.src = '${pageContext.request.contextPath}/js/webfont.js';
             wf.async = true;
             s.parentNode.insertBefore(wf, s);
         })(document);
@@ -38,23 +40,247 @@
 
     <!-- Main CSS File -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/demo1.min.css">
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/all.min.css">
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/simple-line-icons.min.css">
+    <link rel="stylesheet" type="${pageContext.request.contextPath}/css" href="${pageContext.request.contextPath}/vendor/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" type="${pageContext.request.contextPath}/css" href="${pageContext.request.contextPath}/vendor/simple-line-icons/css/simple-line-icons.min.css">
 </head>
 
 <body>
     <div class="page-wrapper">
         <header class="header">
+            <div class="header-top bg-primary text-uppercase">
+                <div class="container">
+                    <div class="header-left">
+                        <div class="header-dropdown mr-auto mr-sm-3 mr-md-0">
+                            <a href="#" class="pl-0"><i class="flag-us flag"></i>ENG</a>
+                            <div class="header-menu">
+                                <ul>
+                                    <li><a href="#"><i class="flag-us flag mr-2"></i>ENG</a>
+                                    </li>
+                                    <li><a href="#"><i class="flag-fr flag mr-2"></i>FRA</a></li>
+                                </ul>
+                            </div>
+                            <!-- End .header-menu -->
+                        </div>
+                        <!-- End .header-dropown -->
 
-            <jsp:include page ="common/header-top-area.jsp" ></jsp:include>
+                        <div class="header-dropdown ml-3 pl-1">
+                            <a href="#">USD</a>
+                            <div class="header-menu">
+                                <ul>
+                                    <li><a href="#">EUR</a></li>
+                                    <li><a href="#">USD</a></li>
+                                </ul>
+                            </div>
+                            <!-- End .header-menu -->
+                        </div>
+                        <!-- End .header-dropown -->
+                    </div>
+                    <!-- End .header-left -->
 
-            <jsp:include page ="common/header-mid-area.jsp" ></jsp:include>
+                    <div class="header-right header-dropdowns ml-0 ml-sm-auto">
+                        <p class="top-message mb-0 d-none d-sm-block">Welcome To Porto!</p>
+                        <div class="header-dropdown dropdown-expanded mr-3">
+                            <a href="#">Links</a>
+                            <div class="header-menu">
+                                <ul>
+                                    <li><a href="dashboard.html">My Account</a></li>
+                                    <li><a href="demo1-contact.html">Contact Us</a></li>
+                                    <li><a href="wishlist.html">My Wishlist</a></li>
+                                    <li><a href="#">Site Map</a></li>
+                                    <li><a href="cart.html">Cart</a></li>
+                                    <li><a href="#" class="login-link">Log In</a></li>
+                                </ul>
+                            </div>
+                            <!-- End .header-menu -->
+                        </div>
+                        <!-- End .header-dropown -->
+
+                        <span class="separator"></span>
+
+                        <div class="social-icons">
+                            <a href="#" class="social-icon social-facebook icon-facebook ml-0" target="_blank"></a>
+                            <a href="#" class="social-icon social-twitter icon-twitter ml-0" target="_blank"></a>
+                            <a href="#" class="social-icon social-instagram icon-instagram ml-0" target="_blank"></a>
+                        </div>
+                        <!-- End .social-icons -->
+                    </div>
+                    <!-- End .header-right -->
+                </div>
+                <!-- End .container -->
+            </div>
+            <!-- End .header-top -->
+
+            <div class="header-middle text-dark sticky-header" data-sticky-options="{'mobile': true}">
+                <div class="container">
+                    <div class="header-left col-lg-2 w-auto pl-0">
+                        <button class="mobile-menu-toggler mr-2" type="button">
+                            <i class="fas fa-bars"></i>
+                        </button>
+                        <a href="demo1.html" class="logo">
+                            <img src="${pageContext.request.contextPath}/img/logo.png" alt="Porto Logo">
+                        </a>
+                    </div>
+                    <!-- End .header-left -->
+
+                    <div class="header-right w-lg-max pl-2">
+                        <div class="header-search header-icon header-search-inline header-search-category w-lg-max">
+                            <a href="#" class="search-toggle" role="button"><i class="icon-search-3"></i></a>
+                            <form action="#" method="get">
+                                <div class="header-search-wrapper">
+                                    <input type="search" class="form-control" name="q" id="q" placeholder="Search..." required>
+                                    <div class="select-custom">
+                                        <select id="cat" name="cat">
+                                            <option value="">All Categories</option>
+                                            <option value="4">Fashion</option>
+                                            <option value="12">- Women</option>
+                                            <option value="13">- Men</option>
+                                            <option value="66">- Jewellery</option>
+                                            <option value="67">- Kids Fashion</option>
+                                            <option value="5">Electronics</option>
+                                            <option value="21">- Smart TVs</option>
+                                            <option value="22">- Cameras</option>
+                                            <option value="63">- Games</option>
+                                            <option value="7">Home &amp; Garden</option>
+                                            <option value="11">Motors</option>
+                                            <option value="31">- Cars and Trucks</option>
+                                            <option value="32">- Motorcycles &amp; Powersports</option>
+                                            <option value="33">- Parts &amp; Accessories</option>
+                                            <option value="34">- Boats</option>
+                                            <option value="57">- Auto Tools &amp; Supplies</option>
+                                        </select>
+                                    </div>
+                                    <!-- End .select-custom -->
+                                    <button class="btn icon-magnifier" type="submit"></button>
+                                </div>
+                                <!-- End .header-search-wrapper -->
+                            </form>
+                        </div>
+                        <!-- End .header-search -->
+
+                        <div class="header-contact d-none d-lg-flex align-items-center pr-xl-5 mr-5 mr-xl-3 ml-5">
+                            <i class="icon-phone-2"></i>
+                            <h6 class="pt-1 line-height-1">Call us now<a href="tel:#" class="d-block text-dark ls-10 pt-1">+123 5678 890</a></h6>
+                        </div>
+                        <!-- End .header-contact -->
+
+                        <a href="login.html" class="header-icon header-icon-user"><i class="icon-user-2"></i></a>
+
+                        <a href="wishlist.html" class="header-icon"><i class="icon-wishlist-2"></i></a>
+
+                        <div class="dropdown cart-dropdown">
+                            <a href="#" title="Cart" class="dropdown-toggle dropdown-arrow cart-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static">
+                                <i class="minicart-icon"></i>
+                                <span class="cart-count badge-circle">3</span>
+                            </a>
+
+                            <div class="cart-overlay"></div>
+
+                            <div class="dropdown-menu mobile-cart">
+                                <a href="#" title="Close (Esc)" class="btn-close">Ã—</a>
+
+                                <div class="dropdownmenu-wrapper custom-scrollbar">
+                                    <div class="dropdown-cart-header">Shopping Cart</div>
+                                    <!-- End .dropdown-cart-header -->
+
+                                    <div class="dropdown-cart-products">
+                                        <div class="product">
+                                            <div class="product-details">
+                                                <h4 class="product-title">
+                                                    <a href="demo1-product.html">Ultimate 3D Bluetooth Speaker</a>
+                                                </h4>
+
+                                                <span class="cart-product-info">
+                                                    <span class="cart-product-qty">1</span> Ã— $99.00
+                                                </span>
+                                            </div>
+                                            <!-- End .product-details -->
+
+                                            <figure class="product-image-container">
+                                                <a href="demo1-product.html" class="product-image">
+                                                    <img src="${pageContext.request.contextPath}/img/products/product-1.jpg" alt="product" width="80" height="80">
+                                                </a>
+
+                                                <a href="#" class="btn-remove" title="Remove Product"><span>Ã—</span></a>
+                                            </figure>
+                                        </div>
+                                        <!-- End .product -->
+
+                                        <div class="product">
+                                            <div class="product-details">
+                                                <h4 class="product-title">
+                                                    <a href="demo1-product.html">Brown Women Casual HandBag</a>
+                                                </h4>
+
+                                                <span class="cart-product-info">
+                                                    <span class="cart-product-qty">1</span> Ã— $35.00
+                                                </span>
+                                            </div>
+                                            <!-- End .product-details -->
+
+                                            <figure class="product-image-container">
+                                                <a href="demo1-product.html" class="product-image">
+                                                    <img src="${pageContext.request.contextPath}/img/products/product-2.jpg" alt="product" width="80" height="80">
+                                                </a>
+
+                                                <a href="#" class="btn-remove" title="Remove Product"><span>Ã—</span></a>
+                                            </figure>
+                                        </div>
+                                        <!-- End .product -->
+
+                                        <div class="product">
+                                            <div class="product-details">
+                                                <h4 class="product-title">
+                                                    <a href="demo1-product.html">Circled Ultimate 3D Speaker</a>
+                                                </h4>
+
+                                                <span class="cart-product-info">
+                                                    <span class="cart-product-qty">1</span> Ã— $35.00
+                                                </span>
+                                            </div>
+                                            <!-- End .product-details -->
+
+                                            <figure class="product-image-container">
+                                                <a href="demo1-product.html" class="product-image">
+                                                    <img src="${pageContext.request.contextPath}/img/products/product-3.jpg" alt="product" width="80" height="80">
+                                                </a>
+                                                <a href="#" class="btn-remove" title="Remove Product"><span>Ã—</span></a>
+                                            </figure>
+                                        </div>
+                                        <!-- End .product -->
+                                    </div>
+                                    <!-- End .cart-product -->
+
+                                    <div class="dropdown-cart-total">
+                                        <span>SUBTOTAL:</span>
+
+                                        <span class="cart-total-price float-right">$134.00</span>
+                                    </div>
+                                    <!-- End .dropdown-cart-total -->
+
+                                    <div class="dropdown-cart-action">
+                                        <a href="cart.html" class="btn btn-gray btn-block view-cart">View
+                                            Cart</a>
+                                        <a href="checkout.html" class="btn btn-dark btn-block">Checkout</a>
+                                    </div>
+                                    <!-- End .dropdown-cart-total -->
+                                </div>
+                                <!-- End .dropdownmenu-wrapper -->
+                            </div>
+                            <!-- End .dropdown-menu -->
+                        </div>
+                        <!-- End .dropdown -->
+                    </div>
+                    <!-- End .header-right -->
+                </div>
+                <!-- End .container -->
+            </div>
+            <!-- End .header-middle -->
 
             <div class="header-bottom sticky-header d-none d-lg-block bg-gray" data-sticky-options="{'mobile': false}">
                 <div class="container">
                     <div class="header-left">
                         <a href="demo1.html" class="logo">
-                            <img src="${pageContext.request.contextPath}/images/logo.png" alt="Porto Logo">
+                            <img src="${pageContext.request.contextPath}/img/logo.png" alt="Porto Logo">
                         </a>
                     </div>
                     <div class="header-center">
@@ -105,7 +331,7 @@
                                             <div class="col-lg-4 p-0">
                                                 <div class="menu-banner">
                                                     <figure>
-                                                        <img src="${pageContext.request.contextPath}/images/menu-banner.jpg" alt="Menu banner" width="300" height="300">
+                                                        <img src="${pageContext.request.contextPath}/img/menu-banner.jpg" alt="Menu banner" width="300" height="300">
                                                     </figure>
                                                     <div class="banner-content">
                                                         <h4>
@@ -159,7 +385,7 @@
                                             <div class="col-lg-4 p-0">
                                                 <div class="menu-banner menu-banner-2">
                                                     <figure>
-                                                        <img src="${pageContext.request.contextPath}/images/menu-banner-1.jpg" alt="Menu banner" class="product-promo" width="380" height="790">
+                                                        <img src="${pageContext.request.contextPath}/img/menu-banner-1.jpg" alt="Menu banner" class="product-promo" width="380" height="790">
                                                     </figure>
                                                     <i>OFF</i>
                                                     <div class="banner-content">
@@ -272,7 +498,7 @@
                             <div class="cart-overlay"></div>
 
                             <div class="dropdown-menu mobile-cart">
-                                <a href="#" title="Close (Esc)" class="btn-close">×</a>
+                                <a href="#" title="Close (Esc)" class="btn-close">Ã—</a>
 
                                 <div class="dropdownmenu-wrapper custom-scrollbar">
                                     <div class="dropdown-cart-header">Shopping Cart</div>
@@ -286,17 +512,17 @@
                                                 </h4>
 
                                                 <span class="cart-product-info">
-                                                    <span class="cart-product-qty">1</span> × $99.00
+                                                    <span class="cart-product-qty">1</span> Ã— $99.00
                                                 </span>
                                             </div>
                                             <!-- End .product-details -->
 
                                             <figure class="product-image-container">
                                                 <a href="demo1-product.html" class="product-image">
-                                                    <img src="${pageContext.request.contextPath}/images/products/product-1.jpg" alt="product" width="80" height="80">
+                                                    <img src="${pageContext.request.contextPath}/img/products/product-1.jpg" alt="product" width="80" height="80">
                                                 </a>
 
-                                                <a href="#" class="btn-remove" title="Remove Product"><span>×</span></a>
+                                                <a href="#" class="btn-remove" title="Remove Product"><span>Ã—</span></a>
                                             </figure>
                                         </div>
                                         <!-- End .product -->
@@ -308,17 +534,17 @@
                                                 </h4>
 
                                                 <span class="cart-product-info">
-                                                    <span class="cart-product-qty">1</span> × $35.00
+                                                    <span class="cart-product-qty">1</span> Ã— $35.00
                                                 </span>
                                             </div>
                                             <!-- End .product-details -->
 
                                             <figure class="product-image-container">
                                                 <a href="demo1-product.html" class="product-image">
-                                                    <img src="${pageContext.request.contextPath}/images/products/product-2.jpg" alt="product" width="80" height="80">
+                                                    <img src="${pageContext.request.contextPath}/img/products/product-2.jpg" alt="product" width="80" height="80">
                                                 </a>
 
-                                                <a href="#" class="btn-remove" title="Remove Product"><span>×</span></a>
+                                                <a href="#" class="btn-remove" title="Remove Product"><span>Ã—</span></a>
                                             </figure>
                                         </div>
                                         <!-- End .product -->
@@ -330,16 +556,16 @@
                                                 </h4>
 
                                                 <span class="cart-product-info">
-                                                    <span class="cart-product-qty">1</span> × $35.00
+                                                    <span class="cart-product-qty">1</span> Ã— $35.00
                                                 </span>
                                             </div>
                                             <!-- End .product-details -->
 
                                             <figure class="product-image-container">
                                                 <a href="demo1-product.html" class="product-image">
-                                                    <img src="${pageContext.request.contextPath}/images/products/product-3.jpg" alt="product" width="80" height="80">
+                                                    <img src="${pageContext.request.contextPath}/img/products/product-3.jpg" alt="product" width="80" height="80">
                                                 </a>
-                                                <a href="#" class="btn-remove" title="Remove Product"><span>×</span></a>
+                                                <a href="#" class="btn-remove" title="Remove Product"><span>Ã—</span></a>
                                             </figure>
                                         </div>
                                         <!-- End .product -->
@@ -389,7 +615,7 @@
 							'nav': false
 						}">
                             <div class="home-slide home-slide1 banner banner-md-vw banner-sm-vw d-flex align-items-center">
-                                <img class="owl-lazy slide-bg" src="${pageContext.request.contextPath}/images/lazy.png" style="background-color: #71b5da;" data-src="${pageContext.request.contextPath}/images/demoes/demo1/banners/banner-4.jpg" width="880" height="280" alt="category-banenr">
+                                <img class="owl-lazy slide-bg" src="${pageContext.request.contextPath}/img/lazy.png" style="background-color: #71b5da;" data-src="${pageContext.request.contextPath}/img/demoes/demo1/banners/banner-4.jpg" width="880" height="280" alt="category-banenr">
                                 <div class="banner-layer">
                                     <h4 class="text-white mb-0">Find the Boundaries. Push Through!</h4>
                                     <h2 class="text-white mb-0">Summer Sale</h2>
@@ -404,7 +630,7 @@
                             <!-- End .home-slide -->
 
                             <div class="home-slide home-slide2 banner banner-md-vw banner-sm-vw d-flex align-items-center">
-                                <img class="owl-lazy slide-bg" src="${pageContext.request.contextPath}/images/lazy.png" data-src="${pageContext.request.contextPath}/images/demoes/demo1/banners/banner-5.jpg" width="880" height="280" alt="category-banenr">
+                                <img class="owl-lazy slide-bg" src="${pageContext.request.contextPath}/img/lazy.png" data-src="${pageContext.request.contextPath}/img/demoes/demo1/banners/banner-5.jpg" width="880" height="280" alt="category-banenr">
                                 <div class="banner-layer text-uppercase">
                                     <h4 class="m-b-2">Over 200 products with discounts</h4>
                                     <h2 class="m-b-3">Great Deals</h2>
@@ -418,7 +644,7 @@
                             <!-- End .home-slide -->
 
                             <div class="home-slide home-slide3 banner banner-md-vw banner-sm-vw  d-flex align-items-center">
-                                <img class="owl-lazy slide-bg" src="${pageContext.request.contextPath}/images/lazy.png" data-src="${pageContext.request.contextPath}/images/demoes/demo1/banners/banner-6.jpg" width="880" height="280" alt="category-banenr" />
+                                <img class="owl-lazy slide-bg" src="${pageContext.request.contextPath}/img/lazy.png" data-src="${pageContext.request.contextPath}/img/demoes/demo1/banners/banner-6.jpg" width="880" height="280" alt="category-banenr" />
                                 <div class="banner-layer text-uppercase">
                                     <h4 class="m-b-2">Up to 70% off</h4>
                                     <h2 class="m-b-3">New Arrivals</h2>
@@ -505,12 +731,14 @@
                         </nav>
 
                         <div class="row products-group">
+                                        <c:forEach items="${listProducts}" var="pro">
                             <div class="col-6 col-sm-4 col-md-3">
                                 <div class="product-default inner-quickview inner-icon">
+                            
                                     <figure class="img-effect">
                                         <a href="demo1-product.html">
-                                            <img src="${pageContext.request.contextPath}/images/demoes/demo1/products/product-1.jpg" width="205" height="205" alt="product">
-                                            <img src="${pageContext.request.contextPath}/images/demoes/demo1/products/product-1-2.jpg" width="205" height="205" alt="product">
+                                            <img src="${pageContext.request.contextPath}/img/demoes/demo1/products/product-1.jpg" width="205" height="205" alt="product">
+                                            <img src="${pageContext.request.contextPath}/img/demoes/demo1/products/product-1-2.jpg" width="205" height="205" alt="product">
                                         </a>
                                         <div class="label-group">
                                             <div class="product-label label-hot">HOT</div>
@@ -539,7 +767,7 @@
                                                     class="icon-heart"></i></a>
                                         </div>
                                         <h3 class="product-title">
-                                            <a href="demo1-product.html">Black Grey Headset</a>
+                                            <a href="demo1-product.html">${pro.name}</a>
                                         </h3>
                                         <div class="ratings-container">
                                             <div class="product-ratings">
@@ -561,517 +789,7 @@
                                 </div>
                             </div>
                             <!-- End .col-sm-4 -->
-
-                            <div class="col-6 col-sm-4 col-md-3">
-                                <div class="product-default inner-quickview inner-icon">
-                                    <figure class="img-effect">
-                                        <a href="demo1-product.html">
-                                            <img src="${pageContext.request.contextPath}/images/demoes/demo1/products/product-2.jpg" width="205" height="205" alt="product" />
-                                        </a>
-                                        <div class="btn-icon-group">
-                                            <a href="demo1-product.html" class="btn-icon btn-add-cart"><i
-                                                    class="fa fa-arrow-right"></i>
-                                            </a>
-                                        </div>
-                                        <a href="ajax/product-quick-view.html" class="btn-quickview" title="Quick View">Quick
-                                            View</a>
-                                    </figure>
-                                    <div class="product-details">
-                                        <div class="category-wrap">
-                                            <div class="category-list">
-                                                <a href="demo1-shop.html" class="product-category">category</a>
-                                            </div>
-                                            <a href="wishlist.html" title="Wishlist" class="btn-icon-wish"><i
-                                                    class="icon-heart"></i></a>
-                                        </div>
-                                        <h3 class="product-title">
-                                            <a href="demo1-product.html">Battery Charger</a>
-                                        </h3>
-                                        <div class="ratings-container">
-                                            <div class="product-ratings">
-                                                <span class="ratings" style="width:100%"></span>
-                                                <!-- End .ratings -->
-                                                <span class="tooltiptext tooltip-top"></span>
-                                            </div>
-                                            <!-- End .product-ratings -->
-                                        </div>
-                                        <!-- End .product-container -->
-                                        <div class="price-box">
-                                            <span class="product-price">$9.00</span>
-                                        </div>
-                                        <!-- End .price-box -->
-                                    </div>
-                                    <!-- End .product-details -->
-                                </div>
-                            </div>
-                            <!-- End .col-sm-4 -->
-
-                            <div class="col-6 col-sm-4 col-md-3">
-                                <div class="product-default inner-quickview inner-icon">
-                                    <figure class="img-effect">
-                                        <a href="demo1-product.html">
-                                            <img src="${pageContext.request.contextPath}/images/demoes/demo1/products/product-3.jpg" width="205" height="205" alt="product">
-                                            <img src="${pageContext.request.contextPath}/images/demoes/demo1/products/product-3-2.jpg" width="205" height="205" alt="product">
-                                        </a>
-                                        <div class="label-group">
-                                            <div class="product-label label-hot">HOT</div>
-                                            <div class="product-label label-sale">-30%</div>
-                                        </div>
-                                        <div class="btn-icon-group">
-                                            <a href="#" class="btn-icon btn-add-cart product-type-simple"><i
-                                                    class="icon-shopping-cart"></i></a>
-                                        </div>
-                                        <a href="ajax/product-quick-view.html" class="btn-quickview" title="Quick View">Quick
-                                            View</a>
-                                    </figure>
-                                    <div class="product-details">
-                                        <div class="category-wrap">
-                                            <div class="category-list">
-                                                <a href="demo1-shop.html" class="product-category">category</a>
-                                            </div>
-                                            <a href="wishlist.html" title="Wishlist" class="btn-icon-wish"><i
-                                                    class="icon-heart"></i></a>
-                                        </div>
-                                        <h3 class="product-title">
-                                            <a href="demo1-product.html">Brown Bag</a>
-                                        </h3>
-                                        <div class="ratings-container">
-                                            <div class="product-ratings">
-                                                <span class="ratings" style="width:100%"></span>
-                                                <!-- End .ratings -->
-                                                <span class="tooltiptext tooltip-top"></span>
-                                            </div>
-                                            <!-- End .product-ratings -->
-                                        </div>
-                                        <!-- End .product-container -->
-                                        <div class="price-box">
-                                            <span class="product-price">$9.00</span>
-                                        </div>
-                                        <!-- End .price-box -->
-                                    </div>
-                                    <!-- End .product-details -->
-                                </div>
-                            </div>
-                            <!-- End .col-sm-4 -->
-
-                            <div class="col-6 col-sm-4 col-md-3">
-                                <div class="product-default inner-quickview inner-icon">
-                                    <figure class="img-effect">
-                                        <a href="demo1-product.html">
-                                            <img src="${pageContext.request.contextPath}/images/demoes/demo1/products/product-4.jpg" width="205" height="205" alt="product">
-                                            <img src="${pageContext.request.contextPath}/images/demoes/demo1/products/product-4-2.jpg" width="205" height="205" alt="product">
-                                        </a>
-                                        <div class="btn-icon-group">
-                                            <a href="demo1-product.html" class="btn-icon btn-add-cart"><i
-                                                    class="fa fa-arrow-right"></i>
-                                            </a>
-                                        </div>
-                                        <a href="ajax/product-quick-view.html" class="btn-quickview" title="Quick View">Quick
-                                            View</a>
-                                    </figure>
-                                    <div class="product-details">
-                                        <div class="category-wrap">
-                                            <div class="category-list">
-                                                <a href="demo1-shop.html" class="product-category">category</a>
-                                            </div>
-                                            <a href="wishlist.html" title="Wishlist" class="btn-icon-wish"><i
-                                                    class="icon-heart"></i></a>
-                                        </div>
-                                        <h3 class="product-title">
-                                            <a href="demo1-product.html">Casual Note Bag</a>
-                                        </h3>
-                                        <div class="ratings-container">
-                                            <div class="product-ratings">
-                                                <span class="ratings" style="width:100%"></span>
-                                                <!-- End .ratings -->
-                                                <span class="tooltiptext tooltip-top"></span>
-                                            </div>
-                                            <!-- End .product-ratings -->
-                                        </div>
-                                        <!-- End .product-container -->
-                                        <div class="price-box">
-                                            <span class="product-price">$9.00</span>
-                                        </div>
-                                        <!-- End .price-box -->
-                                    </div>
-                                    <!-- End .product-details -->
-                                </div>
-                            </div>
-                            <!-- End .col-sm-4 -->
-
-                            <div class="col-6 col-sm-4 col-md-3">
-                                <div class="product-default inner-quickview inner-icon">
-                                    <figure class="img-effect">
-                                        <a href="demo1-product.html">
-                                            <img src="${pageContext.request.contextPath}/images/demoes/demo1/products/product-5.jpg" width="205" height="205" alt="product">
-                                            <img src="${pageContext.request.contextPath}/images/demoes/demo1/products/product-5-2.jpg" width="205" height="205" alt="product">
-                                        </a>
-                                        <div class="btn-icon-group">
-                                            <a href="#" class="btn-icon btn-add-cart product-type-simple"><i
-                                                    class="icon-shopping-cart"></i></a>
-                                        </div>
-                                        <a href="ajax/product-quick-view.html" class="btn-quickview" title="Quick View">Quick
-                                            View</a>
-                                    </figure>
-                                    <div class="product-details">
-                                        <div class="category-wrap">
-                                            <div class="category-list">
-                                                <a href="demo1-shop.html" class="product-category">category</a>
-                                            </div>
-                                            <a href="wishlist.html" title="Wishlist" class="btn-icon-wish"><i
-                                                    class="icon-heart"></i></a>
-                                        </div>
-                                        <h3 class="product-title">
-                                            <a href="demo1-product.html">Porto Extended Camera</a>
-                                        </h3>
-                                        <div class="ratings-container">
-                                            <div class="product-ratings">
-                                                <span class="ratings" style="width:100%"></span>
-                                                <!-- End .ratings -->
-                                                <span class="tooltiptext tooltip-top"></span>
-                                            </div>
-                                            <!-- End .product-ratings -->
-                                        </div>
-                                        <!-- End .product-container -->
-                                        <div class="price-box">
-                                            <span class="product-price">$9.00</span>
-                                        </div>
-                                        <!-- End .price-box -->
-                                    </div>
-                                    <!-- End .product-details -->
-                                </div>
-                            </div>
-                            <!-- End .col-sm-4 -->
-
-                            <div class="col-6 col-sm-4 col-md-3">
-                                <div class="product-default inner-quickview inner-icon">
-                                    <figure class="img-effect">
-                                        <a href="demo1-product.html">
-                                            <img src="${pageContext.request.contextPath}/images/products/product-6.jpg" width="280" height="280" alt="product">
-                                            <img src="${pageContext.request.contextPath}/images/products/product-6-2.jpg" width="280" height="280" alt="product" />
-                                        </a>
-                                        <div class="btn-icon-group">
-                                            <a href="demo1-product.html" class="btn-icon btn-add-cart"><i
-                                                    class="fa fa-arrow-right"></i>
-                                            </a>
-                                        </div>
-                                        <a href="ajax/product-quick-view.html" class="btn-quickview" title="Quick View">Quick View
-                                        </a>
-                                    </figure>
-                                    <div class="product-details">
-                                        <div class="category-wrap">
-                                            <div class="category-list">
-                                                <a href="demo1-shop.html" class="product-category">category</a>
-                                            </div>
-                                            <a href="wishlist.html" title="Wishlist" class="btn-icon-wish"><i
-                                                    class="icon-heart"></i></a>
-                                        </div>
-                                        <h3 class="product-title">
-                                            <a href="demo1-product.html">Men Black Gentle Belt</a>
-                                        </h3>
-                                        <div class="ratings-container">
-                                            <div class="product-ratings">
-                                                <span class="ratings" style="width:100%"></span>
-                                                <!-- End .ratings -->
-                                                <span class="tooltiptext tooltip-top"></span>
-                                            </div>
-                                            <!-- End .product-ratings -->
-                                        </div>
-                                        <!-- End .product-container -->
-
-                                        <div class="price-box">
-                                            <span class="old-price">$90.00</span>
-                                            <span class="product-price">$70.00</span>
-                                        </div>
-                                        <!-- End .price-box -->
-                                    </div>
-                                    <!-- End .product-details -->
-                                </div>
-                            </div>
-                            <!-- End .col-sm-4 -->
-
-                            <div class="col-6 col-sm-4 col-md-3">
-                                <div class="product-default inner-quickview inner-icon">
-                                    <figure class="img-effect">
-                                        <a href="demo1-product.html">
-                                            <img src="${pageContext.request.contextPath}/images/products/product-7.jpg" width="280" height="280" alt="product">
-                                            <img src="${pageContext.request.contextPath}/images/products/product-7-2.jpg" width="280" height="280" alt="product" />
-                                        </a>
-                                        <div class="btn-icon-group">
-                                            <a href="#" class="btn-icon btn-add-cart product-type-simple"><i
-                                                    class="icon-shopping-cart"></i></a>
-                                        </div>
-                                        <a href="ajax/product-quick-view.html" class="btn-quickview" title="Quick View">Quick View
-                                        </a>
-                                    </figure>
-                                    <div class="product-details">
-                                        <div class="category-wrap">
-                                            <div class="category-list">
-                                                <a href="demo1-shop.html" class="product-category">category</a>
-                                            </div>
-                                            <a href="wishlist.html" title="Wishlist" class="btn-icon-wish"><i
-                                                    class="icon-heart"></i></a>
-                                        </div>
-                                        <h3 class="product-title">
-                                            <a href="demo1-product.html">Brown-Black Men Casual Glasses</a>
-                                        </h3>
-                                        <div class="ratings-container">
-                                            <div class="product-ratings">
-                                                <span class="ratings" style="width:100%"></span>
-                                                <!-- End .ratings -->
-                                                <span class="tooltiptext tooltip-top"></span>
-                                            </div>
-                                            <!-- End .product-ratings -->
-                                        </div>
-                                        <!-- End .product-container -->
-
-                                        <div class="price-box">
-                                            <span class="old-price">$90.00</span>
-                                            <span class="product-price">$70.00</span>
-                                        </div>
-                                        <!-- End .price-box -->
-                                    </div>
-                                    <!-- End .product-details -->
-                                </div>
-                            </div>
-                            <!-- End .col-sm-4 -->
-
-                            <div class="col-6 col-sm-4 col-md-3">
-                                <div class="product-default inner-quickview inner-icon">
-                                    <figure class="img-effect">
-                                        <a href="demo1-product.html">
-                                            <img src="${pageContext.request.contextPath}/images/products/product-8.jpg" width="280" height="280" alt="product">
-                                            <img src="${pageContext.request.contextPath}/images/products/product-8-2.jpg" width="280" height="280" alt="product" />
-                                        </a>
-                                        <div class="btn-icon-group">
-                                            <a href="demo1-product.html" class="btn-icon btn-add-cart"><i
-                                                    class="fa fa-arrow-right"></i>
-                                            </a>
-                                        </div>
-                                        <a href="ajax/product-quick-view.html" class="btn-quickview" title="Quick View">Quick View
-                                        </a>
-                                    </figure>
-                                    <div class="product-details">
-                                        <div class="category-wrap">
-                                            <div class="category-list">
-                                                <a href="demo1-shop.html" class="product-category">category</a>
-                                            </div>
-                                            <a href="wishlist.html" title="Wishlist" class="btn-icon-wish"><i
-                                                    class="icon-heart"></i></a>
-                                        </div>
-                                        <h3 class="product-title">
-                                            <a href="demo1-product.html">Brown-Black Men Casual Glasses</a>
-                                        </h3>
-                                        <div class="ratings-container">
-                                            <div class="product-ratings">
-                                                <span class="ratings" style="width:100%"></span>
-                                                <!-- End .ratings -->
-                                                <span class="tooltiptext tooltip-top"></span>
-                                            </div>
-                                            <!-- End .product-ratings -->
-                                        </div>
-                                        <!-- End .product-container -->
-
-                                        <div class="price-box">
-                                            <span class="old-price">$90.00</span>
-                                            <span class="product-price">$70.00</span>
-                                        </div>
-                                        <!-- End .price-box -->
-                                    </div>
-                                    <!-- End .product-details -->
-                                </div>
-                            </div>
-                            <!-- End .col-sm-4 -->
-
-                            <div class="col-6 col-sm-4 col-md-3">
-                                <div class="product-default inner-quickview inner-icon">
-                                    <figure class="img-effect">
-                                        <a href="demo1-product.html">
-                                            <img src="${pageContext.request.contextPath}/images/products/product-9.jpg" width="280" height="280" alt="product">
-                                            <img src="${pageContext.request.contextPath}/images/products/product-9-2.jpg" width="280" height="280" alt="product" />
-                                        </a>
-                                        <div class="btn-icon-group">
-                                            <a href="#" class="btn-icon btn-add-cart product-type-simple"><i
-                                                    class="icon-shopping-cart"></i></a>
-                                        </div>
-                                        <a href="ajax/product-quick-view.html" class="btn-quickview" title="Quick View">Quick View
-                                        </a>
-                                    </figure>
-
-                                    <div class="product-details">
-                                        <div class="category-wrap">
-                                            <div class="category-list">
-                                                <a href="demo1-shop.html" class="product-category">category</a>
-                                            </div>
-                                            <a href="wishlist.html" title="Wishlist" class="btn-icon-wish"><i
-                                                    class="icon-heart"></i></a>
-                                        </div>
-                                        <h3 class="product-title">
-                                            <a href="demo1-product.html">Black Men Casual Glasses</a>
-                                        </h3>
-                                        <div class="ratings-container">
-                                            <div class="product-ratings">
-                                                <span class="ratings" style="width:100%"></span>
-                                                <!-- End .ratings -->
-                                                <span class="tooltiptext tooltip-top"></span>
-                                            </div>
-                                            <!-- End .product-ratings -->
-                                        </div>
-                                        <!-- End .product-container -->
-
-                                        <div class="price-box">
-                                            <span class="old-price">$90.00</span>
-                                            <span class="product-price">$70.00</span>
-                                        </div>
-                                        <!-- End .price-box -->
-                                    </div>
-                                    <!-- End .product-details -->
-                                </div>
-                            </div>
-                            <!-- End .col-sm-4 -->
-
-                            <div class="col-6 col-sm-4 col-md-3">
-                                <div class="product-default inner-quickview inner-icon">
-                                    <figure class="img-effect">
-                                        <a href="demo1-product.html">
-                                            <img src="${pageContext.request.contextPath}/images/products/product-10.jpg" width="280" height="280" alt="product">
-                                            <img src="${pageContext.request.contextPath}/images/products/product-10-2.jpg" width="280" height="280" alt="product" />
-                                        </a>
-                                        <div class="btn-icon-group">
-                                            <a href="demo1-product.html" class="btn-icon btn-add-cart"><i
-                                                    class="fa fa-arrow-right"></i>
-                                            </a>
-                                        </div>
-                                        <a href="ajax/product-quick-view.html" class="btn-quickview" title="Quick View">Quick View
-                                        </a>
-                                    </figure>
-
-                                    <div class="product-details">
-                                        <div class="category-wrap">
-                                            <div class="category-list">
-                                                <a href="demo1-shop.html" class="product-category">category</a>
-                                            </div>
-                                            <a href="wishlist.html" title="Wishlist" class="btn-icon-wish"><i
-                                                    class="icon-heart"></i></a>
-                                        </div>
-                                        <h3 class="product-title">
-                                            <a href="demo1-product.html">Basketball Sports Blue Shoes</a>
-                                        </h3>
-                                        <div class="ratings-container">
-                                            <div class="product-ratings">
-                                                <span class="ratings" style="width:100%"></span>
-                                                <!-- End .ratings -->
-                                                <span class="tooltiptext tooltip-top"></span>
-                                            </div>
-                                            <!-- End .product-ratings -->
-                                        </div>
-                                        <!-- End .product-container -->
-
-                                        <div class="price-box">
-                                            <span class="old-price">$90.00</span>
-                                            <span class="product-price">$70.00</span>
-                                        </div>
-                                        <!-- End .price-box -->
-                                    </div>
-                                    <!-- End .product-details -->
-                                </div>
-                            </div>
-                            <!-- End .col-sm-4 -->
-
-                            <div class="col-6 col-sm-4 col-md-3">
-                                <div class="product-default inner-quickview inner-icon">
-                                    <figure class="img-effect">
-                                        <a href="demo1-product.html">
-                                            <img src="${pageContext.request.contextPath}/images/products/product-11.jpg" width="280" height="280" alt="product">
-                                            <img src="${pageContext.request.contextPath}/images/products/product-11-2.jpg" width="280" height="280" alt="product" />
-                                        </a>
-                                        <div class="btn-icon-group">
-                                            <a href="demo1-product.html" class="btn-icon btn-add-cart"><i
-                                                    class="fa fa-arrow-right"></i>
-                                            </a>
-                                        </div>
-                                        <a href="ajax/product-quick-view.html" class="btn-quickview" title="Quick View">Quick View
-                                        </a>
-                                    </figure>
-
-                                    <div class="product-details">
-                                        <div class="category-wrap">
-                                            <div class="category-list">
-                                                <a href="demo1-shop.html" class="product-category">category</a>
-                                            </div>
-                                            <a href="wishlist.html" title="Wishlist" class="btn-icon-wish"><i
-                                                    class="icon-heart"></i></a>
-                                        </div>
-                                        <h3 class="product-title">
-                                            <a href="demo1-product.html">Men Sports Travel Bag</a>
-                                        </h3>
-                                        <div class="ratings-container">
-                                            <div class="product-ratings">
-                                                <span class="ratings" style="width:100%"></span>
-                                                <!-- End .ratings -->
-                                                <span class="tooltiptext tooltip-top"></span>
-                                            </div>
-                                            <!-- End .product-ratings -->
-                                        </div>
-                                        <!-- End .product-container -->
-
-                                        <div class="price-box">
-                                            <span class="old-price">$90.00</span>
-                                            <span class="product-price">$70.00</span>
-                                        </div>
-                                        <!-- End .price-box -->
-                                    </div>
-                                    <!-- End .product-details -->
-                                </div>
-                            </div>
-                            <!-- End .col-sm-4 -->
-
-                            <div class="col-6 col-sm-4 col-md-3">
-                                <div class="product-default inner-quickview inner-icon">
-                                    <figure class="img-effect">
-                                        <a href="demo1-product.html">
-                                            <img src="${pageContext.request.contextPath}/images/products/product-12.jpg" width="280" height="280" alt="product">
-                                            <img src="${pageContext.request.contextPath}/images/products/product-12-2.jpg" width="280" height="280" alt="product" />
-                                        </a>
-                                        <div class="btn-icon-group">
-                                            <a href="#" class="btn-icon btn-add-cart product-type-simple"><i
-                                                    class="icon-shopping-cart"></i></a>
-                                        </div>
-                                        <a href="ajax/product-quick-view.html" class="btn-quickview" title="Quick View">Quick View
-                                        </a>
-                                    </figure>
-
-                                    <div class="product-details">
-                                        <div class="category-wrap">
-                                            <div class="category-list">
-                                                <a href="demo1-shop.html" class="product-category">category</a>
-                                            </div>
-                                            <a href="wishlist.html" title="Wishlist" class="btn-icon-wish"><i
-                                                    class="icon-heart"></i></a>
-                                        </div>
-                                        <h3 class="product-title">
-                                            <a href="demo1-product.html">Brown HandBag</a>
-                                        </h3>
-                                        <div class="ratings-container">
-                                            <div class="product-ratings">
-                                                <span class="ratings" style="width:100%"></span>
-                                                <!-- End .ratings -->
-                                                <span class="tooltiptext tooltip-top"></span>
-                                            </div>
-                                            <!-- End .product-ratings -->
-                                        </div>
-                                        <!-- End .product-container -->
-
-                                        <div class="price-box">
-                                            <span class="old-price">$90.00</span>
-                                            <span class="product-price">$70.00</span>
-                                        </div>
-                                        <!-- End .price-box -->
-                                    </div>
-                                    <!-- End .product-details -->
-                                </div>
-                            </div>
-                            <!-- End .col-sm-4 -->
+                            </c:forEach>
                         </div>
                         <!-- End .row -->
 
@@ -1267,8 +985,8 @@
                                             <div class="product-default left-details product-widget">
                                                 <figure>
                                                     <a href="product.html">
-                                                        <img src="${pageContext.request.contextPath}/images/products/small/product-4.jpg" width="75" height="75" alt="product" />
-                                                        <img src="${pageContext.request.contextPath}/images/products/small/product-4-2.jpg" width="75" height="75" alt="product" />
+                                                        <img src="${pageContext.request.contextPath}/img/products/small/product-4.jpg" width="75" height="75" alt="product" />
+                                                        <img src="${pageContext.request.contextPath}/img/products/small/product-4-2.jpg" width="75" height="75" alt="product" />
                                                     </a>
                                                 </figure>
                                                 <div class="product-details">
@@ -1293,8 +1011,8 @@
                                             <div class="product-default left-details product-widget">
                                                 <figure>
                                                     <a href="product.html">
-                                                        <img src="${pageContext.request.contextPath}/images/products/small/product-5.jpg" width="75" height="75" alt="product" />
-                                                        <img src="${pageContext.request.contextPath}/images/products/small/product-5-2.jpg" width="75" height="75" alt="product" />
+                                                        <img src="${pageContext.request.contextPath}/img/products/small/product-5.jpg" width="75" height="75" alt="product" />
+                                                        <img src="${pageContext.request.contextPath}/img/products/small/product-5-2.jpg" width="75" height="75" alt="product" />
                                                     </a>
                                                 </figure>
                                                 <div class="product-details">
@@ -1319,8 +1037,8 @@
                                             <div class="product-default left-details product-widget">
                                                 <figure>
                                                     <a href="product.html">
-                                                        <img src="${pageContext.request.contextPath}/images/products/small/product-6.jpg" width="75" height="75" alt="product" />
-                                                        <img src="${pageContext.request.contextPath}/images/products/small/product-6-2.jpg" width="75" height="75" alt="product" />
+                                                        <img src="${pageContext.request.contextPath}/img/products/small/product-6.jpg" width="75" height="75" alt="product" />
+                                                        <img src="${pageContext.request.contextPath}/img/products/small/product-6-2.jpg" width="75" height="75" alt="product" />
                                                     </a>
                                                 </figure>
                                                 <div class="product-details">
@@ -1349,8 +1067,8 @@
                                             <div class="product-default left-details product-widget">
                                                 <figure>
                                                     <a href="product.html">
-                                                        <img src="${pageContext.request.contextPath}/images/products/small/product-1.jpg" width="75" height="75" alt="product" />
-                                                        <img src="${pageContext.request.contextPath}/images/products/small/product-1-2.jpg" width="75" height="75" alt="product" />
+                                                        <img src="${pageContext.request.contextPath}/img/products/small/product-1.jpg" width="75" height="75" alt="product" />
+                                                        <img src="${pageContext.request.contextPath}/img/products/small/product-1-2.jpg" width="75" height="75" alt="product" />
                                                     </a>
                                                 </figure>
                                                 <div class="product-details">
@@ -1375,8 +1093,8 @@
                                             <div class="product-default left-details product-widget">
                                                 <figure>
                                                     <a href="product.html">
-                                                        <img src="${pageContext.request.contextPath}/images/products/small/product-2.jpg" width="75" height="75" alt="product" />
-                                                        <img src="${pageContext.request.contextPath}/images/products/small/product-2-2.jpg" width="75" height="75" alt="product" />
+                                                        <img src="${pageContext.request.contextPath}/img/products/small/product-2.jpg" width="75" height="75" alt="product" />
+                                                        <img src="${pageContext.request.contextPath}/img/products/small/product-2-2.jpg" width="75" height="75" alt="product" />
                                                     </a>
                                                 </figure>
                                                 <div class="product-details">
@@ -1401,8 +1119,8 @@
                                             <div class="product-default left-details product-widget">
                                                 <figure>
                                                     <a href="product.html">
-                                                        <img src="${pageContext.request.contextPath}/images/products/small/product-3.jpg" width="75" height="75" alt="product" />
-                                                        <img src="${pageContext.request.contextPath}/images/products/small/product-3-2.jpg" width="75" height="75" alt="product" />
+                                                        <img src="${pageContext.request.contextPath}/img/products/small/product-3.jpg" width="75" height="75" alt="product" />
+                                                        <img src="${pageContext.request.contextPath}/img/products/small/product-3-2.jpg" width="75" height="75" alt="product" />
                                                     </a>
                                                 </figure>
                                                 <div class="product-details">
@@ -1463,7 +1181,7 @@
                             <div class="widget">
                                 <h4 class="widget-title">About Us</h4>
                                 <a href="demo1.html">
-                                    <img src="${pageContext.request.contextPath}/images/logo-footer.png" alt="Logo" class="logo-footer">
+                                    <img src="${pageContext.request.contextPath}/img/logo-footer.png" alt="Logo" class="logo-footer">
                                 </a>
                                 <p class="m-b-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nec vestibulum magna, et dapibus lacus. Duis nec vestibulum magna, et dapibus lacus.</p>
                                 <a href="#" class="read-more text-white">read more...</a>
@@ -1553,15 +1271,15 @@
             <div class="container">
                 <div class="footer-bottom d-sm-flex align-items-center">
                     <div class="footer-left">
-                        <span class="footer-copyright">© Porto eCommerce. 2021. All Rights Reserved</span>
+                        <span class="footer-copyright">Â© Porto eCommerce. 2021. All Rights Reserved</span>
                     </div>
 
                     <div class="footer-right ml-auto mt-1 mt-sm-0">
                         <div class="payment-icons">
-                            <span class="payment-icon visa" style="background-image: url(assets/images/payments/payment-visa.svg)"></span>
-                            <span class="payment-icon paypal" style="background-image: url(assets/images/payments/payment-paypal.svg)"></span>
-                            <span class="payment-icon stripe" style="background-image: url(assets/images/payments/payment-stripe.png)"></span>
-                            <span class="payment-icon verisign" style="background-image:  url(assets/images/payments/payment-verisign.svg)"></span>
+                            <span class="payment-icon visa" style="background-image: url(${pageContext.request.contextPath}/img/payments/payment-visa.svg)"></span>
+                            <span class="payment-icon paypal" style="background-image: url(${pageContext.request.contextPath}/img/payments/payment-paypal.svg)"></span>
+                            <span class="payment-icon stripe" style="background-image: url(${pageContext.request.contextPath}/img/payments/payment-stripe.png)"></span>
+                            <span class="payment-icon verisign" style="background-image:  url(${pageContext.request.contextPath}/img/payments/payment-verisign.svg)"></span>
                         </div>
                     </div>
                 </div>
