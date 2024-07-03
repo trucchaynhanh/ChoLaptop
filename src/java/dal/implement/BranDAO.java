@@ -6,6 +6,7 @@ package dal.implement;
 
 import dal.GenericDAO;
 import entity.Brand;
+import entity.Category;
 import java.util.List;
 
 /**
@@ -16,12 +17,12 @@ public class BranDAO extends GenericDAO<Brand> {
 
     @Override
     public List<Brand> findAll() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return queryGenericDAO(Brand.class);
     }
 
     @Override
     public int insert(Brand t) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-    
+
 }
