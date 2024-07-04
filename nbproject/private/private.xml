@@ -3,25 +3,31 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group name="Nahhh">
-            <file>file:/D:/A_Lab211/Demo/ChoLaptop/web/view/common/header-top.jsp</file>
-            <file>file:/D:/A_Lab211/Demo/ChoLaptop/src/java/controller/user/DashboardUserServlet.java</file>
-            <file>file:/D:/A_Lab211/Demo/ChoLaptop/web/view/user/userDashboard.jsp</file>
-            <file>file:/D:/A_Lab211/Demo/ChoLaptop/web/view/homepage/home.jsp</file>
             <file>file:/D:/A_Lab211/Demo/ChoLaptop/web/view/common/navbar-dashboard.jsp</file>
-            <file>file:/D:/A_Lab211/Demo/ChoLaptop/web/view/admin/stat.jsp</file>
+            <file>file:/D:/A_Lab211/Demo/ChoLaptop/web/view/homepage/home.jsp</file>
             <file>file:/D:/A_Lab211/Demo/ChoLaptop/web/view/user/UserDetailDashboard.jsp</file>
-            <file>file:/D:/A_Lab211/Demo/ChoLaptop/src/java/controller/admin/DashBoardServlet.java</file>
             <file>file:/D:/A_Lab211/Demo/ChoLaptop/web/view/user/cart.jsp</file>
-            <file>file:/D:/A_Lab211/Demo/ChoLaptop/src/java/dal/implement/OrderDetailsDAO.java</file>
-            <file>file:/D:/A_Lab211/Demo/ChoLaptop/src/java/dal/implement/AccountDAO.java</file>
-            <file>file:/D:/A_Lab211/Demo/ChoLaptop/src/java/controller/homepage/ProductsDetailController.java</file>
+            <file>file:/D:/A_Lab211/Demo/ChoLaptop/web/view/authen/register.jsp</file>
+            <file>file:/D:/A_Lab211/Demo/ChoLaptop/src/java/controller/AuthentiactionServlet.java</file>
+            <file>file:/D:/A_Lab211/Demo/ChoLaptop/src/java/controller/admin/ProductsAdminServlet.java</file>
+            <file>file:/D:/A_Lab211/Demo/ChoLaptop/src/java/controller/user/EditUserInfor2.java</file>
             <file>file:/D:/A_Lab211/Demo/ChoLaptop/src/java/controller/PaymentController.java</file>
-            <file>file:/D:/A_Lab211/Demo/ChoLaptop/web/view/common/header-middle.jsp</file>
             <file>file:/D:/A_Lab211/Demo/ChoLaptop/web/view/admin/dashboard.jsp</file>
             <file>file:/D:/A_Lab211/Demo/ChoLaptop/src/java/dal/implement/ProductsDAO.java</file>
-            <file>file:/D:/A_Lab211/Demo/ChoLaptop/src/java/controller/admin/StatServlet.java</file>
+            <file>file:/D:/A_Lab211/Demo/ChoLaptop/web/view/admin/editProductModal.jsp</file>
+            <file>file:/D:/A_Lab211/Demo/ChoLaptop/web/view/common/header-top.jsp</file>
+            <file>file:/D:/A_Lab211/Demo/ChoLaptop/src/java/controller/user/EditUserInforServlet.java</file>
+            <file>file:/D:/A_Lab211/Demo/ChoLaptop/web/view/user/userDashboard.jsp</file>
+            <file>file:/D:/A_Lab211/Demo/ChoLaptop/web/view/common/iconcard-dashborad.jsp</file>
+            <file>file:/D:/A_Lab211/Demo/ChoLaptop/src/java/dal/implement/AccountDAO.java</file>
+            <file>file:/D:/A_Lab211/Demo/ChoLaptop/web/view/common/top-dashboard.jsp</file>
+            <file>file:/D:/A_Lab211/Demo/ChoLaptop/web/view/common/header-bottom.jsp</file>
+            <file>file:/D:/A_Lab211/Demo/ChoLaptop/web/view/user/confirm.jsp</file>
+            <file>file:/D:/A_Lab211/Demo/ChoLaptop/web/view/common/header-middle.jsp</file>
+            <file>file:/D:/A_Lab211/Demo/ChoLaptop/web/view/admin/addProductModal.jsp</file>
             <file>file:/D:/A_Lab211/Demo/ChoLaptop/src/java/controller/user/DetailUserDashboardServlet.java</file>
             <file>file:/D:/A_Lab211/Demo/ChoLaptop/web/view/homepage/products-detail.jsp</file>
+            <file>file:/D:/A_Lab211/Demo/ChoLaptop/web/view/user/editUserInfor.jsp</file>
             <file>file:/D:/A_Lab211/Demo/ChoLaptop/src/java/controller/homepage/HomeController.java</file>
         </group>
     </open-files>

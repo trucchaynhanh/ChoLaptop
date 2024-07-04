@@ -116,18 +116,18 @@
 
                 <main class="main">
                     <div class="category-banner-container bg-gray">
-                        <div class="category-banner banner text-uppercase" style="background: no-repeat 60%/cover url('${pageContext.request.contextPath}/images/banners/banner-top.jpg');">
+                        <div class="category-banner banner text-uppercase" style="background: no-repeat 60%/cover url('${pageContext.request.contextPath}/images/simple.png');">
                         <div class="container position-relative">
                             <div class="row">
                                 <div class="pl-lg-5 pb-5 pb-md-0 col-sm-5 col-xl-4 col-lg-4 offset-1">
-                                    <h3>Electronic<br>Deals</h3>
+                                    <h3 style="color: white">Navicon<br>Deals</h3>
                                     <a href="demo2-shop.html" class="btn btn-dark">Get Yours!</a>
                                 </div>
                                 <div class="pl-lg-3 col-sm-4 offset-sm-0 offset-1 pt-3">
                                     <div class="coupon-sale-content">
                                         <h4 class="m-b-1 coupon-sale-text bg-white text-transform-none">Exclusive COUPON
                                         </h4>
-                                        <h5 class="mb-2 coupon-sale-text d-block ls-10 p-0"><i class="ls-0">UP TO</i><b class="text-dark">$100</b> OFF</h5>
+                                        <h5 style="color: white" class="mb-2 coupon-sale-text d-block ls-10 p-0"><i class="ls-0">UP TO</i><b class="text-dark">$100</b> OFF</h5>
                                     </div>
                                 </div>
                             </div>
@@ -169,25 +169,57 @@
                                     </a>
 
                                     <div class="toolbox-item toolbox-sort">
-                                        <label>Sort By:</label>
-
+                                        <label>Sắp xếp:</label>
                                         <div class="select-custom">
-                                            <select name="orderby" class="form-control">
-                                              
-                                                <option value="price">Sort by price: low to high</option>
-                                                <option value="price-desc">Sort by price: high to low</option>
-                                            </select>
+                                            <div class="d-flex justify-content-end mb-3">
+                                                <div class="btn-group">
+                                                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                        Sắp xếp
+                                                    </button>
+                                                    <c:set var="categoryIdN" value="${param.categoryId}" />
+                                                    <c:set var="brandIdN" value="${param.brandId}" />
+                                                    <c:set var="keyword" value="${param.keyword}" />
+                                                    <c:set var="minPrice" value="${param.minPrice}" />
+                                                    <c:set var="maxPrice" value="${param.maxPrice}" />
+
+                                                    <div class="dropdown-menu dropdown-menu-right">
+                                                        <c:choose>
+                                                            <c:when test="${param.categoryId != null}">
+
+                                                                <a href="${pageContext.request.contextPath}/home?search=category&categoryId=${categoryIdN}&sort=price-asc">Giá tăng dần</a>
+                                                                <br/>
+                                                                <a href="${pageContext.request.contextPath}/home?search=category&categoryId=${categoryIdN}&sort=price-dsec">Giá giảm dần</a>
+                                                            </c:when>
+                                                            <c:when test="${param.brandId != null}">
+                                                                <a href="${pageContext.request.contextPath}/home?search=brand&brandId=${brandIdN}&sort=price-asc">Giá tăng dần</a>
+                                                                <br/>
+                                                                <a href="${pageContext.request.contextPath}/home?search=brand&brandId=${brandIdN}&sort=price-dsec">Giá giảm dần</a>
+                                                            </c:when>
+                                                            <c:when test="${param.keyword != null}">
+                                                                <a href="${pageContext.request.contextPath}/home?search=searchByName&keyword=${keyword}&sort=price-asc">Giá tăng dần</a>
+                                                                <br/>
+                                                                <a href="${pageContext.request.contextPath}/home?search=searchByName&keyword=${keyword}&sort=price-dsec">Giá giảm dần</a>
+                                                            </c:when>
+                                                            <c:when test="${param.minPrice != null && param.maxPrice != null}">
+                                                                <a href="${pageContext.request.contextPath}/home?search=searchByRange&minPrice=${minPrice}&maxPrice=${maxPrice}&sort=price-asc">Giá tăng dần</a>
+                                                                <br/>
+                                                                <a href="${pageContext.request.contextPath}/home?search=searchByRange&minPrice=${minPrice}&maxPrice=${maxPrice}&sort=price-asc">Giá giảm dần</a>
+                                                            </c:when>
+                                                            <c:otherwise>
+                                                                <a href="${pageContext.request.contextPath}/home?sort=price-asc">Giá tăng dần</a>
+                                                                <br/>
+                                                                <a href="${pageContext.request.contextPath}/home?sort=price-dsec">Giá giảm dần</a>
+                                                            </c:otherwise>
+                                                        </c:choose>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <!-- End .select-custom -->
-
-
                                     </div>
-                                    <!-- End .toolbox-item -->
-                                </div>
-                                <!-- End .toolbox-left -->
+                                    <!-- End .toolbox-left -->
 
 
-                                <!-- End .toolbox-right -->
+                                    <!-- End .toolbox-right -->
                             </nav>
 
                             <div class="row products-group">
@@ -204,10 +236,38 @@
                                                     <div class="product-label label-sale">SUMMER SALE</div>
                                                 </div>
                                                 <div class="btn-icon-group">
-                                                    <a href="#" class="btn-icon btn-add-cart product-type-simple"><i
-                                                            class="icon-shopping-cart"></i></a>
+                                                    <form id="my-form" action="payment?action=add-product" method="POST" onsubmit="return checkQuantityAndSubmit();">
+                                                        <input type="hidden" name="id" value="${pro.id}" />
+                                                        <div class="product-single-qty" style="display: none;">
+                                                            <input class="horizontal-quantity form-control" type="text" name="quantity" value="1">
+                                                        </div>
+                                                        <c:if test="${pro.quantity > 0}">
+                                                             <a href="#" class="btn-icon btn-add-cart product-type-simple" onclick="return this.closest('form').submit();">
+                                                            <i class="icon-shopping-cart"></i>
+                                                        </a>
+                                                        </c:if>
+                                                    </form>
                                                 </div>
-                                                <!--                                        <a href="ajax/product-quick-view.html" class="btn-quickview" title="Quick View">Quick View-->
+
+                                                <script>
+                                                    function checkQuantityAndSubmit() {
+                                                        // Lấy giá trị của quantity
+                                                        var quantityInput = document.querySelector('#my-form input[name="quantity"]');
+                                                        var quantity = parseInt(quantityInput.value);
+
+                                                        // Kiểm tra nếu quantity nhỏ hơn hoặc bằng 0
+                                                        if (quantity <= 0) {
+                                                            alert('Sản phẩm đã hết hàng.');
+                                                            return false; // Ngăn không cho form được submit
+                                                        }
+
+                                                        // Nếu quantity hợp lệ, tiếp tục submit form
+                                                        return true;
+                                                    }
+                                                </script>
+
+
+                                                <a href="ajax/product-quick-view.html" class="btn-quickview" title="Quick View">Quick View
                                                 </a>
                                             </figure>
                                             <div class="product-details">
@@ -242,7 +302,7 @@
                                             </div>
                                             <!-- End .product-details -->
                                         </div>
-                                        
+
                                     </div>
                                     <!-- End .col-sm-4 -->
 

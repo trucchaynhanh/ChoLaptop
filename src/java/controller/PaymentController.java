@@ -122,7 +122,7 @@ public class PaymentController extends HttpServlet {
 
     }
 
-    private void delete(HttpServletRequest request, HttpServletResponse response) {
+   private void delete(HttpServletRequest request, HttpServletResponse response) {
         int id = Integer.parseInt(request.getParameter("id"));
         HttpSession session = request.getSession();
         Order cart = (Order) session.getAttribute("cart");

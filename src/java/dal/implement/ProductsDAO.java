@@ -268,7 +268,8 @@ public class ProductsDAO extends GenericDAO<Products> {
         parameterMap.put("id", product.getId());
         updateGenericDAO(sql, parameterMap);
     }
- public void updatee(Products product) {
+
+    public void updatee(Products product) {
         String sql = "UPDATE [dbo].[Products]\n"
                 + "   SET [quantity] = ?\n"
                 + " WHERE id= ?";
@@ -277,8 +278,9 @@ public class ProductsDAO extends GenericDAO<Products> {
         parameterMap.put("id", product.getId());
         updateGenericDAO(sql, parameterMap);
     }
+
     public Products getById(int productId) {
-String sql = "SELECT [id]\n"
+        String sql = "SELECT [id]\n"
                 + "      ,[name]\n"
                 + "      ,[image]\n"
                 + "      ,[quantity]\n"
@@ -298,7 +300,42 @@ String sql = "SELECT [id]\n"
         parameterMap = new LinkedHashMap<>();
         parameterMap.put("id", productId);
         List<Products> list = queryGenericDAO(Products.class, sql, parameterMap);
-                return list.isEmpty() ? null : list.get(0);
+        return list.isEmpty() ? null : list.get(0);
 
+    }
+
+    public int findTotalRecordByLowHigh(String categoryIdN) {
+        String sql = "SELECT count(*)\n"
+                + "  FROM Products\n"
+                + "  where categoryIdN = ?";
+        parameterMap = new LinkedHashMap<>();
+        parameterMap.put("categoryIdN", categoryIdN);
+        return findTotalRecordGenericDAO(Products.class, sql, parameterMap);
+    }
+
+    public List<Products> findByLowHigh(String categoryIdN, int page) {
+        String sql = "SELECT [id]\n"
+                + "      ,[name]\n"
+                + "      ,[image]\n"
+                + "      ,[quantity]\n"
+                + "      ,[price]\n"
+                + "      ,[description]\n"
+                + "      ,[categoryId]\n"
+                + "      ,[brandId]\n"
+                + "      ,[config]\n"
+                + "      ,[guar]\n"
+                + "      ,[oldPrice]\n"
+                + "      ,[detailImage1]\n"
+                + "      ,[detailImage2]\n"
+                + "      ,[detailImage3]\n"
+                + "      ,[detailImage4]\n"
+                + "      ,[configDetail]\n"
+                + "  FROM [dbo].[Products] where categoryId = ? order by price desc";
+        parameterMap = new LinkedHashMap<>();
+        parameterMap.put("categoryIdN", categoryIdN);
+
+        parameterMap.put("offset", (page - 1) * commonConstant.RECORD_PER_PAGE);
+        parameterMap.put("fetch", commonConstant.RECORD_PER_PAGE);
+        return queryGenericDAO(Products.class, sql, parameterMap);
     }
 }

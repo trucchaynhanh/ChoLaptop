@@ -25,6 +25,8 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import static java.util.Arrays.sort;
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -43,6 +45,7 @@ public class HomeController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        String sort = request.getParameter("sort");
         List<Products> listProductsStag = productsDAO.findByQuantity();
         PageControl pageControl = new PageControl();
         List<Products> listProducts = findProductDoGet(request, pageControl);
@@ -51,7 +54,6 @@ public class HomeController extends HttpServlet {
         List<Account> listAccount = accountDAO.findAlll();
         List<Order> listOrder = orederDAO.findAlll();
         List<OrderDetails> listOrderDetails = orderDetailsDAO.findAlll();
-        
 
         HttpSession session = request.getSession();
         session.setAttribute("listAccount", listAccount);
@@ -63,6 +65,12 @@ public class HomeController extends HttpServlet {
         session.setAttribute("listCategory", listCategory);
         session.setAttribute("listBrand", listBrand);
         session.setAttribute("pageControl", pageControl);
+
+        if ("price-asc".equals(sort)) {
+            listProducts.sort(Comparator.comparing(Products::getPrice));
+        } else if ("price-dsec".equals(sort)) {
+            listProducts.sort(Comparator.comparing(Products::getPrice).reversed());
+        }
         request.getRequestDispatcher("view/homepage/home.jsp").forward(request, response);
 
     }
@@ -137,7 +145,7 @@ public class HomeController extends HttpServlet {
                 listProducts = productsDAO.findByPriceRange(minPrice, maxPrice, page);
                 pagecontrol.setUrlPattern(requestURL + "?search=searchByRange&minPrice=" + minPrice + "&maxPrice=" + maxPrice + "&");
                 break;
-          
+
             default:
                 listProducts = productsDAO.findAll();
                 pagecontrol.setUrlPattern(requestURL + "?");
@@ -154,7 +162,5 @@ public class HomeController extends HttpServlet {
         return listProducts;
 
     }
-
-    
 
 }

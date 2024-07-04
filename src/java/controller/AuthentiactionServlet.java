@@ -7,21 +7,24 @@ package controller;
 import constant.commonConstant;
 import dal.implement.AccountDAO;
 import entity.Account;
+import entity.Products;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.Part;
+import java.io.File;
 
 /**
  *
  * @author mONESIUU
  */
 public class AuthentiactionServlet extends HttpServlet {
-    
+
     AccountDAO accountDAO = new AccountDAO();
-    
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -40,6 +43,9 @@ public class AuthentiactionServlet extends HttpServlet {
                 break;
             case "sign-up":
                 url = "view/authen/register.jsp";
+                break;
+            case "edit-infor":
+                url = "view/user/editUserInfor.jsp";
                 break;
             default:
                 url = "home";
@@ -65,13 +71,16 @@ public class AuthentiactionServlet extends HttpServlet {
             case "sign-up":
                 url = signUp(request, response);
                 break;
+            case "edit-infor":
+                url = edit(request, response);
+                break;
             default:
                 url = "home";
         }
         request.getRequestDispatcher(url).forward(request, response);
-        
+
     }
-    
+
     private String loginDoPost(HttpServletRequest request, HttpServletResponse response) {
         String url = null;
         //get về các thong tin người dufg nhập
@@ -95,12 +104,12 @@ public class AuthentiactionServlet extends HttpServlet {
         }
         return url;
     }
-    
+
     private String logOut(HttpServletRequest request, HttpServletResponse response) {
         request.getSession().removeAttribute(commonConstant.SESSION_ACCOUNT);
         return "home";
     }
-    
+
     private String signUp(HttpServletRequest request, HttpServletResponse response) {
         String url;
         //get ve cac thong tin nguoi dung nhpa
@@ -127,5 +136,28 @@ public class AuthentiactionServlet extends HttpServlet {
         }
         return url;
     }
-    
+
+    private String edit(HttpServletRequest request, HttpServletResponse response) {
+            int id = Integer.parseInt(request.getParameter("id"));
+            String username = request.getParameter("username");
+            String password = request.getParameter("password");
+            String email = request.getParameter("email");
+            String address = request.getParameter("address");
+
+            Account accountU = Account.builder()
+                    .id(id)
+                    .username(username)
+                    .password(password)
+                    .email(email)
+                    .address(address)
+                    .build();
+            accountDAO.update(accountU);
+        String url;
+
+        // Nếu cập nhật không thành công, xử lý thông báo lỗi hoặc chuyển hướng về trang cũ
+        // Ví dụ:
+        url = "home";
+        return url;
+    }
+
 }

@@ -145,7 +145,7 @@
                                         <thead>
                                             <tr>
                                                 <th class="thumbnail-col"></th>
-                                                <th class="product-col">Bỏ vào chứ có tiền mua đâu</th>
+                                                <th class="product-col">Sản phẩm</th>
                                                 <th class="price-col">Giá</th>
                                                 <th class="qty-col">Số lượng</th>
                                                 <th class="text-right">Tổng</th>
@@ -183,18 +183,22 @@
                                                                 <input type="number" name="quantity" value="${p.quantity}" 
                                                                        onchange="alert('Xin lỗi, sản phẩm này chỉ còn ${p.quantity} chiếc. Vui lòng đặt số lượng không vượt quá số lượng còn lại.'); return this.closest('form').submit()"/>
                                                             </c:when>
-                                                           
+
                                                             <c:otherwise>
                                                                 <input type="number" name="quantity" value="${od.quantity}"
                                                                        onchange="return this.closest('form').submit()"/>
                                                             </c:otherwise>
                                                         </c:choose>
+                                                                </form>
                                                 </td>
                                                 <td class="text-right"><span class="subtotal-price">${p.price * od.quantity}</span></td>
-                                                <td> <form action="payment?action=delete" method="POST">
+                                                <td class="product-remove">
+                                                    <form action="payment?action=delete" method="POST" onsubmit="return confirm('Bạn có chắc muốn xóa sản phẩm này?');">
                                                         <input type="hidden" name="id" value="${p.id}"/>
-                                                        <a href="#" onclick="return this.closest('form').submit()">Vứt<i class="fa fa-times"></i></a>
-                                                    </form></td>
+                                                        <button class="btn btn-sm" type="submit">Xóa</button>
+                                                    </form>
+                                                </td>
+
 
                                             </tr>
                                         </c:forEach>
@@ -254,41 +258,7 @@
 
 
 
-                                                <form action="#">
-                                                    <div class="form-group form-group-sm">
-                                                        <label>Shipping to <strong>NY.</strong></label>
-                                                        <div class="select-custom">
-                                                            <select class="form-control form-control-sm">
-                                                                <option value="USA">United States (US)</option>
-                                                                <option value="Turkey">Turkey</option>
-                                                                <option value="China">China</option>
-                                                                <option value="Germany">Germany</option>
-                                                            </select>
-                                                        </div><!-- End .select-custom -->
-                                                    </div><!-- End .form-group -->
 
-                                                    <div class="form-group form-group-sm">
-                                                        <div class="select-custom">
-                                                            <select class="form-control form-control-sm">
-                                                                <option value="NY">New York</option>
-                                                                <option value="CA">California</option>
-                                                                <option value="TX">Texas</option>
-                                                            </select>
-                                                        </div><!-- End .select-custom -->
-                                                    </div><!-- End .form-group -->
-
-                                                    <div class="form-group form-group-sm">
-                                                        <input type="text" class="form-control form-control-sm"
-                                                               placeholder="Town / City">
-                                                    </div><!-- End .form-group -->
-
-                                                    <div class="form-group form-group-sm">
-                                                        <input type="text" class="form-control form-control-sm"
-                                                               placeholder="ZIP">
-                                                    </div><!-- End .form-group -->
-
-
-                                                </form>
                                             </td>
                                         </tr>
                                     </tbody>

@@ -77,59 +77,87 @@
                         </div>
                     </div>
 
-                    
-                   <div class="container login-container d-flex justify-content-center">
-    <div class="row">
-        <div class="col-lg-10 mx-auto">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="heading mb-1">
-                        <h2 class="title">Create an Account</h2>
+                    <div class="container login-container d-flex justify-content-center">
+<style>
+    .error-message {
+    color: red;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+    display: none; /* Ẩn thông báo lỗi ban đầu */
+}
+
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+    var password = document.getElementById('register-password');
+    var confirm_password = document.getElementById('register-confirm-password');
+    var error_message = document.getElementById('password-error');
+
+    function validatePassword() {
+        if (password.value !== confirm_password.value) {
+            error_message.innerHTML = 'Mật khẩu xác nhận không trùng khớp';
+            error_message.style.display = 'block';
+        } else {
+            error_message.style.display = 'none';
+        }
+    }
+
+    confirm_password.addEventListener('input', validatePassword);
+});
+
+        </script>
+                        <div class="row">
+                            <div class="col-lg-10 mx-auto">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="heading mb-1">
+                                            <h2 class="title">Create an Account</h2>
+                                        </div>
+
+                                        <form action="authen?action=sign-up" method="POST" id="signUpForm">
+                                            <label for="register-name">
+                                                Tên đăng nhập
+                                                <span class="required">*</span>
+                                            </label>
+                                            <input type="text" name="username" class="form-input form-wide" id="register-name" required />
+
+                                            <label for="register-email">
+                                                Email 
+                                                <span class="required">*</span>
+                                            </label>
+                                            <input type="email" name="email" class="form-input form-wide" id="register-email" required />
+
+                                            <label for="register-address">
+                                                Địa chỉ
+                                                <span class="required">*</span>
+                                            </label>
+                                            <input type="text" name="address" class="form-input form-wide" id="register-address" required />
+
+                                            <label for="register-password">
+                                                Mật khẩu
+                                                <span class="required">*</span>
+                                            </label>
+                                            <input type="password" name="password" class="form-input form-wide" id="register-password" required />
+
+                                            <label for="register-confirm-password">
+                                                Mật khẩu xác nhận
+                                                <span class="required">*</span>
+                                            </label>
+                                            <input type="password" name="confirm_password" class="form-input form-wide" id="register-confirm-password" required />
+                                            <div id="password-error" class="error-message"></div>
+
+                                            <button type="submit" class="btn btn-cat btn-md w-100">
+                                                <a href="#"
+                                                   onclick="document.querySelector('#signUpForm').submit()">Register</a>
+                                            </button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
-                    <form action="authen?action=sign-up" method="POST" id="signUpForm">
-                        <label for="register-name">
-                            Username
-                            <span class="required">*</span>
-                        </label>
-                        <input type="text" name="username" class="form-input form-wide" id="register-name" required />
-
-                        <label for="register-email">
-                            Email Address
-                            <span class="required">*</span>
-                        </label>
-                        <input type="email" name="email" class="form-input form-wide" id="register-email" required />
-
-                        <label for="register-address">
-                            Address
-                            <span class="required">*</span>
-                        </label>
-                        <input type="text" name="address" class="form-input form-wide" id="register-address" required />
-
-                        <label for="register-password">
-                            Password
-                            <span class="required">*</span>
-                        </label>
-                        <input type="password" name="password" class="form-input form-wide" id="register-password" required />
-
-                        <label for="register-confirm-password">
-                            Confirm Password
-                            <span class="required">*</span>
-                        </label>
-                        <input type="password" name="confirm_password" class="form-input form-wide" id="register-confirm-password" required />
-
-                        <button type="submit" class="btn btn-cat btn-md w-100">
-                           <a href="#"
-                                   onclick="document.querySelector('#signUpForm').submit()">Register</a>
-                        </button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-                <!-- End .footer -->
+                    <!-- End .footer -->
             </div><!-- End .page-wrapper -->
 
             <div class="loading-overlay">

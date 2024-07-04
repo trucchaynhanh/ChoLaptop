@@ -44,8 +44,7 @@
             <a href="authen?action=login" class="header-icon d-inline-block" title="Login"><i
                     class="icon-user-2"></i></a>
 
-            <a href="wishlist.html" class="header-icon d-inline-block" title="Wishlist"><i
-                    class="icon-wishlist-2"></i></a>
+          
 
             <div class="dropdown cart-dropdown">
                 <a href="#" title="Cart" class="dropdown-toggle dropdown-arrow cart-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static">
