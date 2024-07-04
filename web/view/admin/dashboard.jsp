@@ -16,7 +16,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>SB Admin - Dashboard</title>
+        <title>ChoLaptop</title>
 
         <!-- Custom fonts for this template-->
         <link href="${pageContext.request.contextPath}/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -27,7 +27,7 @@
         <!-- Custom styles for this template-->
         <link href="${pageContext.request.contextPath}/css/sb-admin.css" rel="stylesheet">
 
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/colReorder-bootstrap4.css">
+        <link rel="icon" type="image/x-icon" href="${pageContext.request.contextPath}/images/logoCL/Cholaptop (2)_1.png">
 
     </head>
 
@@ -53,22 +53,13 @@
 
 
                         <!-- Area Chart Example-->
-                        <div class="card mb-3">
-                            <div class="card-header">
-                                <i class="fas fa-chart-area"></i>
-                                Area Chart Example
-                            </div>
-                            <div class="card-body">
-                                <canvas id="myAreaChart" width="100%" height="30"></canvas>
-                            </div>
-                            <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
-                        </div>
+                      
 
                         <!-- DataTables Example -->
                         <div class="card mb-3">
                             <div class="card-header">
                                 <i class="fas fa-table"></i>
-                                Data Table Example
+                                Danh sách sản phẩm
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">

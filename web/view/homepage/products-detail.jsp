@@ -16,14 +16,14 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-        <title>Porto - Bootstrap eCommerce Template</title>
+        <title>ChoLaptop</title>
 
         <meta name="keywords" content="HTML5 Template" />
         <meta name="description" content="Porto - Bootstrap eCommerce Template">
         <meta name="author" content="SW-THEMES">
 
         <!-- Favicon -->
-        <link rel="icon" type="image/x-icon" href="${pageContext.request.contextPath}/images/icons/favicon.png">
+        <link rel="icon" type="image/x-icon" href="${pageContext.request.contextPath}/images/logoCL/Cholaptop (2)_1.png">
 
         <script>
             WebFontConfig = {
@@ -62,8 +62,8 @@
                     <div class="container">
                         <nav aria-label="breadcrumb" class="breadcrumb-nav">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="demo1.html"><i class="icon-home"></i></a></li>
-                                <li class="breadcrumb-item"><a href="#"></a></li>
+                                <li class="breadcrumb-item"><a href="home"><i class="icon-home"></i></a></li>
+                                <li class="breadcrumb-item"><a href="#">${product.name} </a></li>
                             </ol>
                         </nav>
                         <div class="product-single-container product-single-default">

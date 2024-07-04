@@ -54,6 +54,7 @@ public class StatServlet extends HttpServlet {
     OrderDAO orderDAO = new OrderDAO();
     OrderDetailsDAO orderDetailsDAO = new OrderDetailsDAO();
     AccountDAO accountDAO = new AccountDAO();
+    CategoryDAO categoryDAO = new CategoryDAO();
     
 
     @Override
@@ -61,6 +62,7 @@ public class StatServlet extends HttpServlet {
             throws ServletException, IOException {
         HttpSession session = request.getSession();
         List<Products> listProducts = dao.findAll();
+        List<Category> listCategory = categoryDAO.findAll();
         List<Order> listOrder = orderDAO.findAlll();
         List<OrderDetails> listOrderDetails = orderDetailsDAO.findAlll();
         List<Account> listAccount = accountDAO.findAlll();
@@ -69,6 +71,7 @@ public class StatServlet extends HttpServlet {
         session.setAttribute("listOrder", listOrder);
         session.setAttribute("listOrderDetails", listOrderDetails);
         session.setAttribute("listAccount", listAccount);
+        session.setAttribute("listCategory", listCategory);
         
 
         //chuyen sang trang dashboard
